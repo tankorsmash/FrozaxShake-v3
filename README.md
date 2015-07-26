@@ -8,6 +8,7 @@ http://www.frozax.com/blog/2012/02/how-to-create-shake-action-cocos2d-x-source-c
 
 Include the header, create the Action:
 
+    #include "FShake.h"
     FShake* shake = FShake::actionWithduration(1.0f, 10.0f);
     
 Then give it a target, and have it do its thing
