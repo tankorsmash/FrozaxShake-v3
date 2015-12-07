@@ -70,3 +70,12 @@ void FShake::stop(void)
 
 	ActionInterval::stop();
 }
+
+FShake* FShake::clone()
+{
+    // no copy constructor
+    auto a = new (std::nothrow) FShake();
+    a->initWithDuration(_duration, _strength_x, _strength_y);
+    a->autorelease();
+    return a;
+}
