@@ -21,3 +21,7 @@ Easy.
 
 * Don't forget to add it to your `Android.mk` file, so that it'll compile for Android. 
 * Tested on Windows 7, cocos2dx-v3.6
+
+###Changelog
+
+* v3.01 added `FShake.clone`
