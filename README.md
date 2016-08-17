@@ -25,3 +25,5 @@ Easy.
 ###Changelog
 
 * v3.01 added `FShake.clone`
+* v3.02 added mertkasar's fix for shaking
+* v3.03 fix shaking crash if target is null
