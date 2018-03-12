@@ -1,22 +1,31 @@
+#include "stdafx.h"
+
 // Code by Francois Guibert
 // Contact: www.frozax.com - http://twitter.com/frozax - www.facebook.com/frozax
 #include "FShake.h"
-#include "cocos2d.h"
-
-USING_NS_CC;
 
 // not really useful, but I like clean default constructors
 FShake::FShake() : _strength_x(0), _strength_y(0), _displacement_x(0), _displacement_y(0)
 {
 }
 
+FShake* FShake::create( float d, float strength )
+{
+    // call other construction method with twice the same strength
+    return create( d, strength, strength );
+}
+
 FShake* FShake::actionWithDuration( float d, float strength )
 {
     // call other construction method with twice the same strength
-    return actionWithDuration( d, strength, strength );
+    return create( d, strength, strength );
 }
 
 FShake* FShake::actionWithDuration(float duration, float strength_x, float strength_y)
+{
+    return create(duration, strength_x, strength_y);
+}
+FShake* FShake::create(float duration, float strength_x, float strength_y)
 {
     FShake *p_action = new FShake();
     p_action->initWithDuration(duration, strength_x, strength_y);
@@ -56,8 +65,10 @@ void FShake::update(float time)
     auto currentPosition = target->getPosition();
 
     // move the target to a shaked position
-    target->setPosition(currentPosition.x - _displacement_x + rand_x,
-            currentPosition.y - _displacement_y + rand_y);
+    target->setPosition(
+        currentPosition.x - _displacement_x + rand_x,
+        currentPosition.y - _displacement_y + rand_y
+    );
 
     // Keep track of the last displacement
     _displacement_x = rand_x;
