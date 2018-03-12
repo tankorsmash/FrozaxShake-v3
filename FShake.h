@@ -1,7 +1,7 @@
 #ifndef __SHAKE_H__
 #define __SHAKE_H__
 
-#include "cocos2d.h"
+#include "2d/CCActionInterval.h"
 
 class FShake : public cocos2d::ActionInterval
 {
@@ -11,9 +11,15 @@ class FShake : public cocos2d::ActionInterval
         FShake();
 
         // Create the action with a time and a strength (same in x and y)
-        static FShake* actionWithDuration(float d, float strength );
+        /** @deprecated Use `create()` instead. */
+        CC_DEPRECATED_ATTRIBUTE static FShake* actionWithDuration(float d, float strength );
+        static FShake* create(float d, float strength );
+
         // Create the action with a time and strengths (different in x and y)
-        static FShake* actionWithDuration(float d, float strength_x, float strength_y );
+        /** @deprecated Use `create()` instead. */
+        CC_DEPRECATED_ATTRIBUTE static FShake* actionWithDuration(float d, float strength_x, float strength_y );
+        static FShake* create(float d, float strength_x, float strength_y );
+
         bool initWithDuration(float d, float strength_x, float strength_y );
 
         virtual void update(float time);
@@ -29,4 +35,3 @@ class FShake : public cocos2d::ActionInterval
 };
 
 #endif //__SHAKE_H__
-
